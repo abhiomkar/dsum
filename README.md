@@ -1,6 +1,7 @@
 Installation
 ------------
 Install (`my-wifi-name` is your SSID - WIFI Name)
+    
     sudo make install SSID=my-wifi-name
 
 Run
