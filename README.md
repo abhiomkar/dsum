@@ -46,6 +46,7 @@ Total Data Received in Last One Hour (in MB)
 
 Dependencies
 ------------
+Currently this script works only on Mac OS X (10.4 or Later)
 sqlite3
 
 command to install sqlite3:
