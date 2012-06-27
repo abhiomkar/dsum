@@ -9,6 +9,11 @@ Code for Fun!
 
 Installation
 ------------
+
+[Download](https://github.com/abhiomkar/dsum/zipball/master) the code.
+
+Unzip the file and change the directory to unzipped folder
+
 Install (`my-wifi-name` is your SSID - WIFI Name)
     
     sudo make install SSID=my-wifi-name
