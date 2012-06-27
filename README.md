@@ -1,6 +1,6 @@
 Description
 -----------
-Broadband Meter called as Dsum. Records Data Received / Data Sent (in Bytes)
+Broadband Meter (Codename Dsum). Records Data Received / Data Sent (in Bytes)
 periodically to a persistent database.
 
 Initial requirement from my roomies `:-)` on who is downloading how much `;-)`
