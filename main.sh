@@ -15,7 +15,9 @@ DURATION=60
 DB_NAME="dsum.db"
 DB_PATH="/Library/Application Support/Abhiomkar/Dsum/$DB_NAME"
 USER_HOST="$(whoami)_$(hostname)"
-SSID=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep -e " SSID:" | awk '{print $2}'`
+function get_ssid () {
+    SSID=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep -e " SSID:" | awk '{print $2}'`
+}
 
 function get_data_iobytes () {
     data_iobytes=`netstat -bi | grep -v Ibytes | grep -v "-" | grep "^en" | awk '{ ibytes += $7 } { obytes += $10 } END { print ibytes,obytes }'`;
@@ -48,6 +50,7 @@ let data_received_delta=$data_received-$data_received_prev;
 let data_sent_delta=$data_sent-$data_sent_prev;
 
 while true; do
+    get_ssid;
     if [ $SSID == $TARGET_SSID ];
     then
         sqlite3 "$DB_PATH" "INSERT INTO dsum (data_received_delta, data_sent_delta, ssid, user_host) values ($data_received_delta, $data_sent_delta, \"$SSID\", \"$USER_HOST\")";
