@@ -9,6 +9,11 @@ Code for Fun!
 
 Installation
 ------------
+
+[Download](https://github.com/abhiomkar/dsum/zipball/master) the code.
+
+Unzip the file and change the directory to unzipped folder
+
 Install (`my-wifi-name` is your SSID - WIFI Name)
     
     sudo make install SSID=my-wifi-name
@@ -41,6 +46,8 @@ Total Data Received in Last One Hour (in MB)
 
 Dependencies
 ------------
+Currently this script works only on Mac OS X (10.4 or Later)
+
 sqlite3
 
 command to install sqlite3:
@@ -52,3 +59,10 @@ Uninstall
 
     sudo make uninstall
 
+TODO
+----
+* Front end user-inteface with Line/Bar Charts
+* Show Peek Hours
+* Alerts/Monitoring System
+* Broadband Usage Summary Emails
+* Admin Dashboard
