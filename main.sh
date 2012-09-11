@@ -33,7 +33,6 @@ data_sent_prev=0;
 
 first_loop=true;
 
-mkdir -p "/Library/Application Support/Abhiomkar/Dsum/"
 # CREAT TABLE 'DSUM' IF NOT EXISTS
 sqlite3 "$DB_PATH" "CREATE TABLE IF NOT EXISTS dsum (id INTEGER PRIMARY KEY AUTOINCREMENT, data_received_delta INTEGER DEFAULT 0, data_sent_delta INTEGER DEFAULT 0, user_host TEXT, ssid TEXT, date TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
 
