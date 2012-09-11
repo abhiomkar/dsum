@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Dsum by abhiomkar</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dsum</h1>
+        <p>Broadband Meter called Dsum</p>
+
+        <p class="view"><a href="https://github.com/abhiomkar/dsum">View the Project on GitHub <small>abhiomkar/dsum</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/abhiomkar/dsum/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/abhiomkar/dsum/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/abhiomkar/dsum">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Description</h2>
+
+<p>Broadband Meter (Codename Dsum). Records Data Received / Data Sent (in Bytes)
+periodically to a persistent database.</p>
+
+<p>Initial requirement from my roomies <code>:-)</code> on who is downloading how much <code>;-)</code></p>
+
+<p>Code for Fun!</p>
+
+<h2>Installation</h2>
+
+<p><a href="https://github.com/abhiomkar/dsum/zipball/master">Download</a> the code.</p>
+
+<p>Unzip the file and change the directory to unzipped folder</p>
+
+<p>Install (<code>my-wifi-name</code> is your SSID - WIFI Name)</p>
+
+<pre><code>sudo make install SSID=my-wifi-name
+</code></pre>
+
+<p>Run</p>
+
+<pre><code>sudo make run
+</code></pre>
+
+<p>Stop</p>
+
+<pre><code>sudo make stop
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>Total Data Received (in MB)</p>
+
+<pre><code>sqlite3 /Library/Application\ Support/Abhiomkar/Dsum/dsum.db "select SUM(data_received_delta)/(1024.0*1024.0) from dsum"
+</code></pre>
+
+<p>Total Data Sent (in MB)</p>
+
+<pre><code>sqlite3 /Library/Application\ Support/Abhiomkar/Dsum/dsum.db "select SUM(data_sent_delta)/(1024.0*1024.0) from dsum"
+</code></pre>
+
+<p>Total Data Received Today (in MB)</p>
+
+<pre><code>sqlite3 /Library/Application\ Support/Abhiomkar/Dsum/dsum.db "select SUM(data_received_delta)/(1024.0*1024.0) from dsum where strftime('%Y-%m-%d', DATETIME(date, 'localtime'))=strftime('%Y-%m-%d', 'now')"
+</code></pre>
+
+<p>Total Data Received in Last One Hour (in MB)</p>
+
+<pre><code>sqlite3 /Library/Application\ Support/Abhiomkar/Dsum/dsum.db "select SUM(data_received_delta)/(1024.0*1024.0) from dsum where DATETIME(date, 'localtime') &gt;= DATETIME('now', 'localtime', '-1 hours')"
+</code></pre>
+
+<h2>Dependencies</h2>
+
+<p>Currently this script works only on Mac OS X (10.4 or Later)</p>
+
+<p>sqlite3</p>
+
+<p>command to install sqlite3:</p>
+
+<pre><code>brew install sqlite3
+</code></pre>
+
+<h2>Uninstall</h2>
+
+<pre><code>sudo make uninstall
+</code></pre>
+
+<h2>TODO</h2>
+
+<ul>
+<li>Front end user-inteface with Line/Bar Charts</li>
+<li>Show Peek Hours</li>
+<li>Alerts/Monitoring System</li>
+<li>Broadband Usage Summary Emails</li>
+<li>Admin Dashboard</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/abhiomkar">abhiomkar</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
